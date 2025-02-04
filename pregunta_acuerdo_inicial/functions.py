@@ -33,7 +33,7 @@ def no_entendimiento(state):
     print("---pregunta_si_no_acuerdo de pago---")
     user_input = state["input"]
     message =  "bobo"
-    return {"message":message}
+    return {"message":message, "tarea":"no_entendimiento"}
 
 builder2 = StateGraph(State2)
 builder2.add_node("human_feedback", human_feedback)

@@ -20,8 +20,8 @@ def lambda_handler(event, context=None):
     message = chat[first_key]['message']
     tarea = chat[first_key]['tarea']
     return {"body":{
-        "message" : message,
+        "message" : message ,
         "tareas :" : tarea
     }}
-print(lambda_handler(event={"texto_input": "no tengo plata", "tarea":"inicio"}))
- 
+print(lambda_handler(event={"texto_input": "si me interesa", "tarea":"no_dinero"}))
+#print(f_pregunta_acuerdo_inicial.chat_pregunta_acuerdo_inicial("si me interesa")) 
