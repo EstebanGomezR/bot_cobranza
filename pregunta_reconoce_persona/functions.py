@@ -49,7 +49,7 @@ builder.add_conditional_edges(
 )
 graph = builder.compile(checkpointer=memory)
 
-def chat_pregunta_uno(input_usuario):
+def chat_pregunta(input_usuario):
     config = {"configurable": {"thread_id": "1234"}}
     for event in graph.stream({"input":input_usuario}, config, stream_mode="values"):
         pass
