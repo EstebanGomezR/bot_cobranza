@@ -23,5 +23,5 @@ def lambda_handler(event, context=None):
         "message" : message ,
         "tareas :" : tarea
     }}
-print(lambda_handler(event={"texto_input": "si me interesa", "tarea":"no_dinero"}))
-#print(f_pregunta_acuerdo_inicial.chat_pregunta_acuerdo_inicial("si me interesa")) 
+print(lambda_handler(event={"texto_input": "quiero pagar 80000 pasado mañana y dejamelo a 12 cuotas", "tarea":"si_acepta"}))
+#print(f_pregunta_acuerdo_aceptado.chat_pregunta_acuerdo_acptado("quiero pagar 80000 pasado mañana y dejamelo a 12 cuotas")) 

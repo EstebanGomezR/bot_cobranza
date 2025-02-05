@@ -10,6 +10,7 @@ memory = MemorySaver()
 class State3(TypedDict):
     input: str
     message: str
+    tarea:str
 
 def extraer_datos(state):
     print("---Transicion humanfeedback luces o conexion---")
@@ -70,11 +71,11 @@ def consultar_arreglo(state):
         message = prompts.chain_prompt_oferta_uno.invoke({"data_oferta":str(mejor_match),})
     else : 
         message = prompts.chain_prompt_no_oferta.invoke({"input_usuario":"NA"}) 
-    return {"message": message}
+    return {"message": message,  "tarea": "consultar_arreglo"}
 
 def preguntar_faltantes(state):
     message =  prompts.chain_prompt_datos_faltantes.invoke({"datos_faltantes":state.get("message", {})})
-    return {"message":message}
+    return {"message":message , "tarea": "preguntar_faltantes"}
 builder3 = StateGraph(State3)
 builder3.add_node("human_feedback", human_feedback)
 builder3.add_node("extraer_datos", extraer_datos)
