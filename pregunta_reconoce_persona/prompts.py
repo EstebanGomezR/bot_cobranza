@@ -53,37 +53,10 @@ prompt_acuerdo_pago = ChatPromptTemplate.from_template("""
 # Chain
 chain_prompt_acuerdo_pago = prompt_acuerdo_pago | models_llm.llm_chat_mini | StrOutputParser()
 
-prompt_abono = ChatPromptTemplate.from_template("""
+prompt_no_reconoce_persona = ChatPromptTemplate.from_template("""
                     Tu trabajo es ser un asesor de cobranzas de la empresa abz.
-                    En la conversacion no debes saludar, debes indicarle al usuario que los medios de pago que tenemos disponible son pse y tarjeta.
-                    Luego de eso brinda una calurosa despedida 
+                    En la conversacion no debes saludar, debes indicarle al usuario que lamentamos haberlo llamado y despesdirte muy amablemente 
 """)
 
 # Chain
-chain_prompt_abono = prompt_abono | models_llm.llm_chat_mini | StrOutputParser()
-
-prompt_pago_realizado = ChatPromptTemplate.from_template("""
-                    Tu trabajo es ser un asesor de cobranzas de la empresa abz.
-                    En la conversacion no debes saludar, debes agradecer al usuario por su pago ya que tenia una deuda con la empresa y ya fue saldada
-                    luego muy amablemente te despides
-                    Reglas:
-                    Nunca des confirmacion de que recibiste el pago
-                    Nunca digas que la deuda esta saldada o algo referente
-                    Tu respuesta debe ser maximo de 30 palabras
-""")
-
-# Chain
-chain_prompt_pago_realizado = prompt_pago_realizado | models_llm.llm_chat_mini | StrOutputParser()
-
-prompt_no_reconoce_datos = ChatPromptTemplate.from_template("""
-                    Tu trabajo es ser un asesor de cobranzas de la empresa abz.
-                    En la conversacion no debes saludar, debes pedirle una confirmacion al usuario de si reconoce la persona que se nombro 
-                    partiendo de que antes dijiste unos datos y la persona menciono que no era el.
-                    el nombre mencionado fue {nombre}
-                    Reglas:
-                    Tu respuesta debe ser maximo de 30 palabras
-                    
-""")
-
-# Chain
-chain_prompt_no_reconoce_datos = prompt_no_reconoce_datos | models_llm.llm_chat_mini | StrOutputParser()
+chain_prompt_no_reconoce_persona = prompt_no_reconoce_persona | models_llm.llm_chat_mini | StrOutputParser()

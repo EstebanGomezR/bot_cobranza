@@ -39,7 +39,7 @@ def pago_realizado(state):
 
 def no_reconoce_deuda(state):
     user_input = state["input"]
-    message =  prompts.chain_prompt_no_reconoce_datos.invoke({"nombre":"Maicol Purizaga"})
+    message =  prompts.chain_prompt_no_reconoce_datos.invoke({"nombre":"Jose Gomez"})
     return {"message":message, "tarea" : "no_reconoce_deuda"}
 
 def no_entendimiento(state):
