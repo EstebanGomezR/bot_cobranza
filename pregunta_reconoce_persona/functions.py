@@ -27,6 +27,12 @@ def no_reconoce_persona(state):
     message =  prompts.chain_prompt_no_reconoce_persona.invoke({"user_input":user_input})
     return {"message":message, "tarea" : "no_reconoce_persona"}
 
+def si_reconoce_persona(state):
+    print("---pregunta_si_no_acuerdo de pago---")
+    user_input = state["input"]
+    message =  prompts.chain_prompt_si_reconoce_persona.invoke({"user_input":user_input})
+    return {"message":message, "tarea" : "si_reconoce_persona"}
+
 def no_entendimiento(state):
     print("---pregunta_si_no_acuerdo de pago---")
     user_input = state["input"]
@@ -36,6 +42,7 @@ def no_entendimiento(state):
 builder = StateGraph(State)
 builder.add_node("human_feedback", human_feedback)
 builder.add_node("no_reconoce_persona", no_reconoce_persona)
+builder.add_node("si_reconoce_persona", si_reconoce_persona)
 builder.add_node("no_entendimiento", no_entendimiento)
 builder.add_edge(START, "human_feedback")
 builder.add_edge("no_reconoce_persona", END)
@@ -43,6 +50,7 @@ builder.add_conditional_edges(
     "human_feedback",
     T1,
     {
+        "reconoce": "si_reconoce_persona",
         "no_reconoce": "no_reconoce_persona",
         "no_entendimiento" : "no_entendimiento",
     },

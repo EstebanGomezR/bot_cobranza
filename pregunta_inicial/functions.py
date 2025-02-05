@@ -15,6 +15,8 @@ def T1(state):
     print("---Transicion humanfeedback")
     user_input = state["input"]
     respuesta = prompts.chain_enrutamiento_respuesta_inicial.invoke({"user_input":user_input})
+    print("Nodo T1")
+    print( respuesta)
     return respuesta["answer"]
 
 def human_feedback(state):

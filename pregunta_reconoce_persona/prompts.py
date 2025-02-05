@@ -60,3 +60,11 @@ prompt_no_reconoce_persona = ChatPromptTemplate.from_template("""
 
 # Chain
 chain_prompt_no_reconoce_persona = prompt_no_reconoce_persona | models_llm.llm_chat_mini | StrOutputParser()
+
+prompt_si_reconoce_persona = ChatPromptTemplate.from_template("""
+                    Tu trabajo es ser un asesor de cobranzas de la empresa abz.
+                    En la conversacion no debes saludar, debes indicarle al usuario que por favor nos indique amablemente el numero celular de la persona sobre la que se esta conversando
+""")
+
+# Chain
+chain_prompt_si_reconoce_persona = prompt_si_reconoce_persona | models_llm.llm_chat_mini | StrOutputParser()

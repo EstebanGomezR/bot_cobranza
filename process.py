@@ -2,7 +2,8 @@ from pregunta_inicial import functions as f_pregunta_inicial
 from pregunta_acuerdo_inicial import functions as f_pregunta_acuerdo_inicial
 from pregunta_acuerdo_aceptado import functions as f_pregunta_acuerdo_aceptado
 from pregunta_reconoce_persona import functions as f_pregunta_reconoce_persona
-
+from pregunta_si_reconoce_persona import functions as f_pregunta_si_reconoce_persona
+from Despedida import functions as f_despedida
 
 
 def enrutador(texto_input, tarea):
@@ -14,6 +15,12 @@ def enrutador(texto_input, tarea):
         return f_pregunta_acuerdo_aceptado.chat_pregunta_acuerdo_acptado(texto_input)
     if tarea == "no_reconoce_deuda":
         return f_pregunta_reconoce_persona.chat_pregunta(texto_input)
+    if tarea == "si_reconoce_persona":
+        return f_pregunta_si_reconoce_persona.chat_pregunta(texto_input)
+    if tarea == "telefono_no_indicado":
+        return f_pregunta_si_reconoce_persona.chat_pregunta(texto_input)    
+    if tarea == "despedida":
+        return f_despedida.chat_pregunta(texto_input)
         
 def lambda_handler(event, context=None):
     texto_input = event['texto_input']
@@ -26,5 +33,5 @@ def lambda_handler(event, context=None):
         "message" : message ,
         "tareas :" : tarea
     }}
-print(lambda_handler(event={"texto_input": "no conozco a esa persona", "tarea":"no_reconoce_deuda"}))
-#print(f_pregunta_reconoce_persona.chat_pregunta_uno("no se quien es")) 
+print(lambda_handler(event={"texto_input": "es el 3243658160", "tarea":"despedida"}))
+#print(f_pregunta_si_reconoce_persona.chat_pregunta(" es "))
