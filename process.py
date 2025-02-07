@@ -33,5 +33,5 @@ def lambda_handler(event, context=None):
         "message" : message ,
         "tareas :" : tarea
     }}
-print(lambda_handler(event={"texto_input": "es el 3243658160", "tarea":"despedida"}))
+print(lambda_handler(event={"texto_input": "si lo conozco", "tarea":"no_reconoce_deuda"}))
 #print(f_pregunta_si_reconoce_persona.chat_pregunta(" es "))
